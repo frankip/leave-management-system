@@ -3,34 +3,57 @@ from django.db import models
 
 # Create your models here.
 
-class Role(models.Model):
+class ModelMethods():
+    created_at = models.DateField(auto_now_add=True)
+
+
+    @classmethod
+    def fetch_all_data(cls):
+        return cls.objects.all()
+
+    @classmethod
+    def fetch_single_data(cls, id):
+        return cls.objects.get(id=id)
+
+    # @classmethod
+    # def update_single_data(cls, id, **kwargs):
+    #     return cls.objects.filter(id=id).update(kwargs)
+
+
+    @classmethod
+    def delete_single_data(cls, id):
+        return cls.fetch_single_data(id).delete()
+
+
+
+class Role(ModelMethods, models.Model):
     role_title = models.CharField(max_length=100, verbose_name="Role")
-    role_description = models.TextField()
+    role_description = models.TextField(blank=True)
 
     def __str__(self):
         return self.role_title
 
 
-class Employee(models.Model):
+class Employee(ModelMethods, models.Model):
     name = models.CharField(max_length=150, verbose_name="Full names")
-    email = models.EmailField()
-    date_of_birth = models.DateField()
-    address = models.CharField(max_length=250)
+    email = models.EmailField(blank=True)
+    date_of_birth = models.DateField(blank=True)
+    address = models.CharField(max_length=250, blank=True)
     role = models.ForeignKey(Role, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
  
-class LeaveType(models.Model):
+class LeaveType(ModelMethods, models.Model):
     name = models.CharField(max_length=100, verbose_name="Leave")
-    description = models.TextField()
+    description = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
 
 
-class Leave(models.Model):
+class Leave(ModelMethods, models.Model):
     STATUS = (
         ('APPROVED', 'Approved'),
         ('REJECTED','Rejected'),
@@ -47,6 +70,4 @@ class Leave(models.Model):
 
     def __str__(self):
         return f'{self.employee.name} - {self.type.name}'
-
-
 

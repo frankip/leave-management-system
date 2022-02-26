@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    <h1 class="text-center">Leave Details</h1>
+    <div class="card text-center">
+        <div class="card-header">
+          Featured
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{leave_details.employee}}</h5>
+          <p class="card-text">{{leave_details.type}}</p>
+          <a href="#" class="btn btn-primary">{{leave_details.status}}</a>
+        </div>
+        <div class="card-footer text-muted">
+          2 days ago
+        </div>
+      </div>
+    
+{% endblock %}

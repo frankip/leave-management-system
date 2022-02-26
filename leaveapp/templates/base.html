@@ -13,12 +13,16 @@
     {% endblock %}
   </head>
   <body>
+    <div class="container">
+      {% include 'nav_bar.html' %}
 
-    {% block content %}
-        <!-- content goes here -->
-    {% endblock %}
-
-
+      
+      {% block content %}
+      <!-- content goes here -->
+      {% endblock %}
+      
+      
+    </div>
 
     {% block scripts %}
         <!-- Option 1: Bootstrap Bundle with Popper -->

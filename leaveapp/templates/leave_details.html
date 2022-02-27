@@ -9,10 +9,14 @@
         <div class="card-body">
           <h5 class="card-title">{{leave_details.employee}}</h5>
           <p class="card-text">{{leave_details.type}}</p>
+          <p>From - {{leave_details.start_date}}</p>
+          <p>To - {{leave_details.end_date}}</p>
           <a href="#" class="btn btn-primary">{{leave_details.status}}</a>
         </div>
         <div class="card-footer text-muted">
-          2 days ago
+          {{ leave_details.applied_date }}
+
+          <a class="badge bg-danger" href="{% url 'delete-leave' leave_details.id %}">delete</a>
         </div>
       </div>
     

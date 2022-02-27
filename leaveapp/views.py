@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+
+# local imports
 from .models import Leave
+from .forms import LeaveForm
 
 # Create your views here.
 
@@ -28,3 +31,29 @@ def fetch_leave_details(request, id):
     }
 
     return render(request, 'leave_details.html', ctx)
+
+
+def requet_new_leave(request):
+    # add form funtionality here
+    if request.method == 'POST':
+        # create form instance and populate with data from htmls forms 
+        form = LeaveForm(request.POST)
+        # validate the inputs
+        if form.is_valid():
+            # form.commit(False)
+            form.save()
+            return redirect('leaves')
+
+    # instantiate empty form
+    form = LeaveForm()
+    ctx={
+        'form': form
+    }
+    return render(request, 'request_leave.html', ctx)
+
+def delete_leave_request(request, id):
+    deleted = Leave.delete_single_data(id)
+    print('deleted', deleted)
+    return redirect('leaves')
+
+# figure out how to get the date diference

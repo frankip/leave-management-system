@@ -66,6 +66,7 @@ class Leave(ModelMethods, models.Model):
     status = models.CharField(max_length=50, choices=STATUS, default="PENDING")
     start_date = models.DateField(default=date.today)
     end_date = models.DateField()
+    requested_days = models.IntegerField(default=1, blank=True)
     applied_date = models.DateField(auto_now_add=True)
 
     def __str__(self):

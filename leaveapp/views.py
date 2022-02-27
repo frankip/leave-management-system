@@ -1,4 +1,4 @@
-
+import datetime
 from django.contrib import messages
 from django.shortcuts import redirect, render
 
@@ -7,6 +7,17 @@ from .models import Leave
 from .forms import LeaveForm
 
 # Create your views here.
+
+def get_number_of_days(start, end):
+    days = abs((end-start)).days+1
+
+    # fetch all dates between start day and end date
+    all_dates = [start + datetime.timedelta(days=x) for x in range(days)]
+
+    # use the datetime weekday() method to determine if the days fall on a weekend 
+    weekdays = [date for date in all_dates if not date.weekday() in [5,6]]
+    return len(weekdays)
+
 
 def index(request):
     title = "Welcome to leave Management App"
@@ -44,7 +55,13 @@ def requet_new_leave(request):
         # validate the inputs
         if form.is_valid():
             # form.commit(False)
-            form.save()
+            data = form.save(commit=False)
+            start_date = form.cleaned_data.get('start_date')
+            end_date = form.cleaned_data.get('end_date')
+            days = get_number_of_days(start_date, end_date)
+            data.requested_days = days
+            print("90900", data.requested_days)
+            data.save()
             return redirect('leaves')
 
         errors = form.errors
@@ -62,6 +79,11 @@ def  edit_leave_request(request, id):
     leave = Leave.fetch_single_data(id)
     form = LeaveForm(request.POST or None, instance=leave)
     if form.is_valid():
+            data = form.save(commit=False)
+            start_date = form.cleaned_data.get('start_date')
+            end_date = form.cleaned_data.get('end_date')
+            days = get_number_of_days(start_date, end_date)
+            data.requested_days = days
             form.save()
             return redirect('leave-details', leave.id)
 
@@ -75,5 +97,3 @@ def delete_leave_request(request, id):
     deleted = Leave.delete_single_data(id)
     print('deleted', deleted)
     return redirect('leaves')
-
-# figure out how to get the date diference

@@ -6,7 +6,7 @@
     <a href="{% url 'leave-details' leave.id %}">
 
         <div class="card border-primary mb-3">
-            <div class="card-header">{{ leave.created_at.year}}</div>
+            <div class="card-header">{{ leave.applied_date|date }}</div>
             <div class="card-body text-primary">
                 <h5 class="card-title">{{ leave.employee }}</h5>
                 <p class="card-text">{{ leave.type }}</p>

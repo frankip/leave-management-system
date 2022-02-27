@@ -51,6 +51,20 @@ def requet_new_leave(request):
     }
     return render(request, 'request_leave.html', ctx)
 
+
+def  edit_leave_request(request, id):
+    leave = Leave.fetch_single_data(id)
+    form = LeaveForm(request.POST or None, instance=leave)
+    if form.is_valid():
+            form.save()
+            return redirect('leave-details', leave.id)
+
+    ctx ={
+        "form": form,
+        "id": id
+    }
+    return render(request, 'leave_details_edit.html', ctx)
+
 def delete_leave_request(request, id):
     deleted = Leave.delete_single_data(id)
     print('deleted', deleted)

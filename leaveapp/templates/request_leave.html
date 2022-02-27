@@ -4,6 +4,9 @@
     <h1 class="text-center">Requests Leave</h1>
 
     <div>
+        {% if errors %}
+            <p class="invalid-feedback">{{ errors }}</p>
+        {% endif %}
         <form action="/leave/add/" method="post">
             {% csrf_token %}
             {{ form.as_p }}

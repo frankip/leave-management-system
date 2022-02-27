@@ -1,3 +1,5 @@
+
+from django.contrib import messages
 from django.shortcuts import redirect, render
 
 # local imports
@@ -35,6 +37,7 @@ def fetch_leave_details(request, id):
 
 def requet_new_leave(request):
     # add form funtionality here
+    errors = None
     if request.method == 'POST':
         # create form instance and populate with data from htmls forms 
         form = LeaveForm(request.POST)
@@ -44,10 +47,13 @@ def requet_new_leave(request):
             form.save()
             return redirect('leaves')
 
+        errors = form.errors
+
     # instantiate empty form
     form = LeaveForm()
     ctx={
-        'form': form
+        'form': form,
+        'errors': errors
     }
     return render(request, 'request_leave.html', ctx)
 

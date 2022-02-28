@@ -47,6 +47,11 @@ You will need a few prerequisite to run the project locally
    python manage.py runserver
    ```
 
+## extra steps
+in order to request a leave, you need create instances of 
+`Role, Employee, LeaveType,` models. this can be done in the admin interface 
+
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 

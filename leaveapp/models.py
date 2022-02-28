@@ -1,5 +1,6 @@
 from datetime import date
 from django.db import models
+from django.shortcuts import get_object_or_404
 
 # Create your models here.
 
@@ -13,12 +14,7 @@ class ModelMethods():
 
     @classmethod
     def fetch_single_data(cls, id):
-        return cls.objects.get(id=id)
-
-    # @classmethod
-    # def update_single_data(cls, id, **kwargs):
-    #     return cls.objects.filter(id=id).update(kwargs)
-
+        return get_object_or_404(cls, id=id)
 
     @classmethod
     def delete_single_data(cls, id):

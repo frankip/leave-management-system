@@ -55,13 +55,13 @@ You will need a few prerequisite to run the project locally
 ## Usage
 
 
-|  paths 	|   views	|   	|   	|   	|
-|---	|---	|---	|---	|---	|
-|   `leave/` 	|   view all leave request 	|
-|   `leave/id/` |  view single leave request  	|
-|   `leave/add/`	| request a new leave  	|
-|   `leave/id/edit/`|  edit a single leave request 	| 
-|   `leave/id/delete/`	| delete a single leave request  	|
+|  paths 	            |   views	                    |
+|-----------------------|-------------------------------|
+|   `leave/` 	         | view all leave request   	  |
+|   `leave/id/`         | view single leave request     |
+|   `leave/add/`	      | request a new leave  	        |
+|   `leave/id/edit/`    | edit a single leave request   | 
+|   `leave/id/delete/`  | delete a single leave request |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

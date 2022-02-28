@@ -16,8 +16,6 @@ You will need a few prerequisite to run the project locally
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
 
 1. Clone the repo
    ```sh
@@ -56,26 +54,14 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+|  paths 	|   views	|   	|   	|   	|
+|---	|---	|---	|---	|---	|
+|   `leave/` 	|   view all leave request 	|
+|   `leave/id/` |  view single leave request  	|
+|   `leave/add/`	| request a new leave  	|
+|   `leave/id/edit/`|  edit a single leave request 	| 
+|   `leave/id/delete/`	| delete a single leave request  	|
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -111,9 +97,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - [Francis Kipchumba](https://github.com/frankip) 
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/frankip/leave-management-system](https://github.com/frankip/leave-management-system)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
